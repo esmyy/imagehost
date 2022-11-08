@@ -1,2 +1,2 @@
-# imagehost
+# imghost
 Blog image host.
