@@ -13,7 +13,7 @@
   <meta name="author" content="Esmyy">
   <meta name="theme-color" content="#1e2327">
   <link rel="icon" type="image/png" href="//cdn.jsdelivr.net/gh/esmyy/imghost@main/images/favicon.png">
-  <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_20170_48.bf9b1349f8e5113e1be0df1991572168.js"></script>
+  <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_20170_49.a2eea49a83c8e5f5586d26b3c31b0650.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js" integrity="sha512-UzpQxIWgLbHvbVd4+8fcRWqFLi1pQ6qO6yXm+Hiig76VhnhW/gvfvnacdPanleB2ak+VwiI5BUqrPovGDPsKWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -23,9 +23,26 @@
 <link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 <body>
+
 <div id="esmyy">
     
-    
+        <div class="firstScreen " id="firstScreen" style="background-image: url(//cdn.jsdelivr.net/gh/esmyy/imghost@main/images/air-beijing-chengdu.jpg)">
+  <div class="lifeCard">
+    <p>有时怡然，洵美且好</p>
+    <p>靠近美好，创造想要的生活</p>
+  </div>
+  <div class="pictureIntroduction" style="color: #fff">
+    <p></p>
+    <p><iconpark-icon class="pr-4" size="16" name="local-two" style="margin-left: -2px;"></iconpark-icon>北京飞往成都</p>
+    <p><iconpark-icon class="pr-4" name="calendar-thirty-two"></iconpark-icon>2022年10月11日</p>
+  </div>
+  <div class="scrollDownWrapper" id="scrollDownWrapper">
+    <div class="scrollDown">
+      <iconpark-icon name="double-down" size="32" color="#fff"></iconpark-icon>
+    </div>
+  </div>
+</div>
+        
 <header>
   <div class="mainContent headerContent">
     <ul class="menus">
@@ -71,23 +88,22 @@
     <div class="status-box"></div>
   </a>
 </header>
-    <main class="mainContent">
-        <article class="mainContent articleContent">
-  <div  data-scroll-reveal>
-    
-    <div class="articleHeader">
-      <h1>北京秋日，居家隔离的日子</h1>
-    </div>
-    
+        <main class="mainContent">
+            <article class="articleContent">
+  
+  <div class="articleHeader">
+    <h1>北京秋日，居家隔离的日子</h1>
+  </div>
+  
 
-    <div class="articleMeta">
-      <iconpark-icon name="calendar"></iconpark-icon>
-      <span class="date">2022-11-07</span>
-    </div>
+  <div class="articleMeta">
+    <iconpark-icon name="calendar"></iconpark-icon>
+    <span class="date">2022-11-07</span>
+  </div>
 
-    <div class="articleBody" itemprop="articleBody">
-      
-      <div class="qrImgWrapper">
+  <div class="articleBody" itemprop="articleBody">
+    
+    <div class="qrImgWrapper">
 <img src="/2022/11/07/covid-home-quarantine/autumn.jpeg" class="" title="秋天">
 </div>
 
@@ -102,13 +118,12 @@
 <p>未来又会是怎样的呢？</p>
 <p>生命并不长，愿我们都能在艰难的日子里寻找到希望，积蓄力量，待阴霾将散之时，<br>于破晓时如新芽破土而出，终于再见温暖的晨光。</p>
 
-      
-    </div>
+    
   </div>
 </article>
 
-    </main>
-    <footer>
+        </main>
+        <footer>
     <div class="mainContent footBar">
         <p class="aboutMe">
             <a href="/about">
@@ -118,6 +133,43 @@
     </div>
 </footer>
 
+        <div class="backTopWrapper">
+  <div class="backTopIcon">
+    <iconpark-icon name="arrow-up" size="18"></iconpark-icon>
+  </div>
 </div>
+    
+
+</div>
+<script>
+// 设置”回到顶部“按钮
+;(() => {
+  const backTop = document.querySelector('.backTopWrapper');
+  window.addEventListener('scroll', (e) => {
+    const list = Array.from(backTop.classList)
+    const isVisible = list.includes('visible')
+    const scrollY = window.scrollY
+    if (scrollY > 100 && !isVisible) {
+        list.push('visible');
+        backTop.classList = list.join(' ')
+    } else if (scrollY < 100 && isVisible) {
+        backTop.classList = list.filter(s => s !== 'visible').join(' ')
+    }
+  })
+
+  backTop?.addEventListener('click', () => {
+    $('html,body').animate({scrollTop: '0px'}, 800);
+  })
+})();
+
+// 设置首屏图片在手机一直可见
+;(() => {
+    const firstScreen = document.querySelector('.firstScreen')
+    const isHomeFirstPage = document.querySelector('.homeFirstPage')
+    if (!isHomeFirstPage && window.innerWidth > 414) {
+        firstScreen.classList = Array.from(firstScreen.classList).concat('hidden').join(' ')
+    }
+})();
+</script>
 </body>
 </html>
