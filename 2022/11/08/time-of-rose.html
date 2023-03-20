@@ -14,11 +14,11 @@
   <meta name="theme-color" content="#1e2327">
   <link rel="icon" type="image/png" href="//cdn.jsdelivr.net/gh/esmyy/imghost@main/images/favicon.png">
   <script src="https://lf1-cdn-tos.bytegoofy.com/obj/iconpark/icons_20170_49.a2eea49a83c8e5f5586d26b3c31b0650.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.js" integrity="sha512-UzpQxIWgLbHvbVd4+8fcRWqFLi1pQ6qO6yXm+Hiig76VhnhW/gvfvnacdPanleB2ak+VwiI5BUqrPovGDPsKWQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.1/viewer.min.css" integrity="sha512-XHhuZDcgyu28Fsd75blrhZKbqqWCXaUCOuy2McB4doeSDu34BgydakOK71TH/QEhr0nhiieBNhF8yWS8thOGUg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/esmyy/imghost@maincss/main.css">
+  <script src="https://cdn.bootcdn.net/ajax/libs/viewerjs/1.11.3/viewer.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+  <link href="https://cdn.bootcdn.net/ajax/libs/viewerjs/1.11.3/viewer.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/esmyy/imghost@main/css/main.css">
   <script>
     var _hmt = _hmt || [];
   (function() {
@@ -29,7 +29,7 @@
   })();
   </script>
 <meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="esmyy" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+</head>
 
 <body>
 
@@ -37,8 +37,7 @@
     
         <div class="firstScreen " id="firstScreen" style="background-image: url(//cdn.jsdelivr.net/gh/esmyy/imghost@main/images/air-beijing-chengdu.jpg)">
   <div class="lifeCard">
-    <p>有时怡然，洵美且好</p>
-    <p>靠近美好，创造想要的生活</p>
+    <p>慎思，明辨，笃行</p>
   </div>
   <div class="pictureIntroduction" style="color: #fff">
     <p></p>
@@ -61,33 +60,28 @@
           <span>首页</span>
         </a>
       </li>
-      
-      
-      
-      <li class="optionalMenuItem ">
-        <a href="/categories/reading">
-          <iconpark-icon name="read-book"></iconpark-icon>
-          <span>阅读</span>
-        </a>
-      </li>
-      
-
-      <li class="">
-        <a href="/tags">
-          <iconpark-icon name="tag-one"></iconpark-icon>
-          <span>标签</span>
-        </a>
-      </li>
-      <li class="">
-        <a href="/categories">
-          <iconpark-icon name="document-folder"></iconpark-icon>
-          <span>分类</span>
-        </a>
-      </li>
       <li class="">
         <a href="/archives">
           <iconpark-icon name="calendar-thirty-two"></iconpark-icon>
           <span>时间轴</span>
+        </a>
+      </li>
+      <li class="">
+        <a href="/photos">
+          <iconpark-icon name="camera"></iconpark-icon>
+          <span>照片</span>
+        </a>
+      </li>
+      <li class="">
+        <a href="/shuoshuo">
+          <iconpark-icon name="speaker-one"></iconpark-icon>
+          <span>说说</span>
+        </a>
+      </li>
+      <li class="optionalMenuItem ">
+        <a href="/tags">
+          <iconpark-icon name="tag-one"></iconpark-icon>
+          <span>标签</span>
         </a>
       </li>
     </ul>
@@ -119,7 +113,17 @@
 
     
   </div>
+  <div id="vcomments"></div>
 </article>
+<script src="//cdn.jsdelivr.net/gh/esmyy/imghost@main/js/valine.1.15.1.js">
+</script>
+<script>
+  new Valine({
+    el: '#vcomments',
+    appId: 'HIPSmz3qt9iZF654dkSgfXr2-MdYXbMMI', // Your LeanCloud appId
+    appKey: 'IIZyd4Ee0LH46v96sUQFgo7V' // Your LeanCloud appKey
+  })
+</script>
 
         </main>
         <footer>
@@ -165,8 +169,27 @@
 ;(() => {
     const firstScreen = document.querySelector('.firstScreen')
     const isHomeFirstPage = document.querySelector('.homeFirstPage')
-    if (!isHomeFirstPage && window.innerWidth > 414) {
-        firstScreen.classList = Array.from(firstScreen.classList).concat('hidden').join(' ')
+    const isPhotoes = /photos/.test(location.pathname)
+    const visible = isHomeFirstPage || window <= 414;
+    if (visible) {
+        firstScreen.classList = Array.from(firstScreen.classList).concat('visible').join(' ')
+    }
+})();
+
+// 本地图片url处理
+;(() => {
+    function fixImgUrl() {
+        const imgs = document.querySelectorAll('img');
+        imgs.forEach((img) => {
+            const src = img.getAttribute('src');
+            // if (!/^(|http)/.test(src)) {
+            //     img.setAttribute('src', '/' + src)
+            // }
+        })
+    }
+
+    if (/localhost/i.test(location.hostname)) {
+        fixImgUrl();
     }
 })();
 </script>
